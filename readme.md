@@ -16,18 +16,18 @@ Create a quiz application that displays a list of available quizzes offered on t
 ### Frontend:
 
 - Quiz List Page:
- -  All available quizzes should be displayed
- -  Quizzes will be logically separated into subdivisions based on quiz category (ie. Math, Science, History, etc.)
- -  Basic quiz information should be displayed here (ie. Number of questions, quiz name, etc.)
- -  Clicking one of the displayed quizzes will redirect user to the quiz preview page
+    -  All available quizzes should be displayed
+    -  Quizzes will be logically separated into subdivisions based on quiz category (ie. Math, Science, History, etc.)
+    -  Basic quiz information should be displayed here (ie. Number of questions, quiz name, etc.)
+    -  Clicking one of the displayed quizzes will redirect user to the quiz preview page
 - Quiz Taking Page
- -  Prior to quiz starting, display a brief description of the quiz, number of questions, and an option to either start the quiz or return to the quiz list page
- -  Upon quiz start, show all questions and they’re answers
- -  Upon submitting the quiz, the quiz is graded and the user is redirected to a page displaying their score
+    -  Prior to quiz starting, display a brief description of the quiz, number of questions, and an option to either start the quiz or return to the quiz list page
+    -  Upon quiz start, show all questions and they’re answers
+    -  Upon submitting the quiz, the quiz is graded and the user is redirected to a page displaying their score
 - Quiz Score Page
 The total score of the user is displayed on the screen
 The user has the ability to view the questions answered and see the questions they got wrong
- -  Have a button returns them to the home page when clicked
+    -  Have a button returns them to the home page when clicked
 
 ### Backend:
 
@@ -53,8 +53,8 @@ The user has the ability to view the questions answered and see the questions th
 - Add a section for the user to select related quizzes upon finishing
 - Have quizzes with multiple question types (ie. multiple choice, select multiple, etc.)
 - Add users login to save a record of their results.
- -  Add a Quiz History page.
- -  Indicate on the main page which quizzes they have already taken.
+    -  Add a Quiz History page.
+    -  Indicate on the main page which quizzes they have already taken.
 
 ## Technologies
 You will make the project using these technologies
