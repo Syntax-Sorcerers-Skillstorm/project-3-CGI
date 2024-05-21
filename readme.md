@@ -1,6 +1,4 @@
-# Project Instructions
-
-## Quiz Application
+# Quiz Application
 ### Project Instructions
 ### Due 06/07/24
 
