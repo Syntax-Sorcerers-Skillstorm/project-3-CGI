@@ -25,8 +25,8 @@ Create a quiz application that displays a list of available quizzes offered on t
     -  Upon quiz start, show all questions and they’re answers
     -  Upon submitting the quiz, the quiz is graded and the user is redirected to a page displaying their score
 - Quiz Score Page
-The total score of the user is displayed on the screen
-The user has the ability to view the questions answered and see the questions they got wrong
+    - The total score of the user is displayed on the screen
+    - The user has the ability to view the questions answered and see the questions they got wrong
     -  Have a button returns them to the home page when clicked
 
 ### Backend:
