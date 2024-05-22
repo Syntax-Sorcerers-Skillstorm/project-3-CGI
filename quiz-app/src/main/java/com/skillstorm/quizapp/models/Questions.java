@@ -7,16 +7,17 @@ import jakarta.persistence.Id;
 import lombok.Data;
 
 @Entity
+//lombok will generate setter/getters and constructors
 @Data
 public class Questions {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long questionId;
-    String category;
-    String question;
-    String option1;
-    String option2;
-    String option3;
-    String correctAnswer;
+    private long questionId;
+    private String category;
+    private String question;
+    private String option1;
+    private String option2;
+    private String option3;
+    private String correctAnswer;
 
 }

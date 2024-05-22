@@ -1,0 +1,10 @@
+# define the DataSource configuration.
+spring:
+  datasource:
+    url: database-1-instance-1.chet1jfzht8q.us-east-1.rds.amazonaws.com
+    username: admin
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: create
