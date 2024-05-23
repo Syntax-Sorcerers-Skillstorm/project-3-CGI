@@ -1,4 +1,4 @@
-package com.skillstorm.quizapp.controllers;
+package com.skillstorm.quizapp.controller;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.skillstorm.quizapp.models.Question;
+import com.skillstorm.quizapp.models.Questions;
 import com.skillstorm.quizapp.services.QuestionService;
 
 @RestController
@@ -20,14 +20,14 @@ public class QuestionController {
 
     // Get list of all questions
     @GetMapping
-    public List<Question> all() {
+    public List<Questions> all() {
         return questionService.findAll();
     }
 
     // Get question by id
     @GetMapping("/{id}")
-    public ResponseEntity<Question> one(@PathVariable Long id) {
-        Question question = questionService.findById(id);
+    public ResponseEntity<Questions> one(@PathVariable Long id) {
+        Questions question = questionService.findById(id);
         if (question != null) {
             return ResponseEntity.ok(question);
         } else {
@@ -37,15 +37,15 @@ public class QuestionController {
 
     // Add question
     @PostMapping
-    public ResponseEntity<Question> newQuestion(@RequestBody Question newQuestion) {
-        Question question = questionService.save(newQuestion);
+    public ResponseEntity<Questions> newQuestion(@RequestBody Questions newQuestion) {
+        Questions question = questionService.save(newQuestion);
         return ResponseEntity.status(HttpStatus.CREATED).body(question);
     }
 
     // Edit question
     @PutMapping("/{id}")
-    public ResponseEntity<Question> updateQuestion(@RequestBody Question updatedQuestion, @PathVariable Long id) {
-        Question question = questionService.findById(id);
+    public ResponseEntity<Questions> updateQuestion(@RequestBody Questions updatedQuestion, @PathVariable Long id) {
+        Questions question = questionService.findById(id);
         if (question != null) {
             updatedQuestion.setQuestionId(id); // Ensure the ID is set correctly
             questionService.save(updatedQuestion);

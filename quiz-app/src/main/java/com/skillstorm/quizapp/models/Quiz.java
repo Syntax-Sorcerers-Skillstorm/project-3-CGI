@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 
 public class Quiz {
-    @OneToMany
+    // @OneToMany
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;

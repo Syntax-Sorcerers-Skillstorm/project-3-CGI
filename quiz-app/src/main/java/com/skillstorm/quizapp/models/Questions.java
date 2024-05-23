@@ -10,7 +10,7 @@ import lombok.Data;
 @Entity
 @Data
 public class Questions {
-    @ManyToOne
+    // @ManyToOne
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long questionId;
