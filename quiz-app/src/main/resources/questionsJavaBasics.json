@@ -1,5 +1,5 @@
 {
-    "Questions": [
+    "questions": [
       {
         "category": "Java Basics",
         "question": "What is the default value of an int variable in Java?",
