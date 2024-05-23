@@ -8,11 +8,11 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Users {
+
+public class Quiz {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int userId;
-    String username;
-    String email;
+    int id;
+    String category;
 
 }
