@@ -1,26 +1,26 @@
 package com.skillstorm.quizapp.dto;
 
-import com.skillstorm.quizapp.models.*;
 
 public class AnswerDTO {
 
-    private Question questionId;
+    private Long questionId;
     private String answer;
+    private Long userId;
 
     public AnswerDTO() {
     }
 
-    public AnswerDTO(Question questionId, String answer) {
+    public AnswerDTO(Long questionId, String answer) {
         this.questionId = questionId;
         this.answer = answer;
     }
     
 
-    public Question getQuestionId() {
+    public Long getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(Question questionId) {
+    public void setQuestionId(Long questionId) {
         this.questionId = questionId;
     }
 
@@ -66,6 +66,14 @@ public class AnswerDTO {
         } else if (!answer.equals(other.answer))
             return false;
         return true;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
 

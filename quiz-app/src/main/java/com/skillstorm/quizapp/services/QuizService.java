@@ -35,7 +35,7 @@ public class QuizService {
     public ResultDTO gradeQuiz(List<AnswerDTO> answers) {
         int correctAnswersCount = 0;
         Long quizId = null;
-        Long userId = null; // You can adjust this based on your authentication logic
+        Long userId = null; 
 
         for (AnswerDTO answerDTO : answers) {
             Question question = questionRepository.findById(answerDTO.getQuestionId()).orElse(null);
