@@ -1,9 +1,7 @@
 package com.skillstorm.quizapp.controller;
 
 import java.util.List;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 import com.skillstorm.quizapp.models.Question;
@@ -19,7 +17,7 @@ public class QuestionController {
     }
 
     // Get list of all questions
-    @GetMapping
+    @GetMapping //filter by quiz instead of all
     public List<Question> all() {
         return questionService.findAll();
     }
@@ -34,7 +32,7 @@ public class QuestionController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
-
+    
     // Add question
     @PostMapping
     public ResponseEntity<Question> newQuestion(@RequestBody Question newQuestion) {
@@ -58,7 +56,7 @@ public class QuestionController {
     // Delete question
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteQuestion(@PathVariable Long id) {
-        if (questionService.findById(id) != null) {
+        if (questionService.findById(id) != null) { 
             questionService.deleteById(id);
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         } else {

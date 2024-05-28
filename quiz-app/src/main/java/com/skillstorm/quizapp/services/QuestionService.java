@@ -9,30 +9,30 @@ import com.skillstorm.quizapp.repos.QuestionRepo;
 
 @Service
 public class QuestionService {
-    private final QuestionRepo QuestionRepo;
+    private final QuestionRepo questionRepo;
 
-    public QuestionService(QuestionRepo QuestionRepo) {
-        this.QuestionRepo = QuestionRepo;
+    public QuestionService(QuestionRepo questionRepo) {
+        this.questionRepo = questionRepo;
     }
 
-    // Get list of all questions
     public List<Question> findAll() {
-        return QuestionRepo.findAll();
+        return questionRepo.findAll();
     }
 
-    // Get question by id
-    public Question findById(Long id) {
-        Optional<Question> question = QuestionRepo.findById(id);
+    public Question findById(Long questionId) {
+        Optional<Question> question = questionRepo.findById(questionId);
         return question.orElse(null);
     }
 
-    // Add or update question
     public Question save(Question question) {
-        return QuestionRepo.save(question);
+        return questionRepo.save(question);
     }
 
-    // Delete question by id
-    public void deleteById(Long id) {
-        QuestionRepo.deleteById(id);
+    public void deleteById(Long questionId) {
+        questionRepo.deleteById(questionId);
+    }
+
+    public List<Question> findAllByQuizId(Long quizId) {
+        return questionRepo.findByQuizId(quizId);
     }
 }

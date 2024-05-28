@@ -1,29 +1,15 @@
-package com.skillstorm.quizapp.models;
+package com.skillstorm.quizapp.dto;
 
-import jakarta.persistence.*;
-import java.util.List;
-
-//encapsulates the quiz details, dto responsible forÍ transfering data between client and server
-@Entity
-@Table(name = "quizzes")
-public class Quiz {
-    // @OneToMany
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+public class QuizDTO {
     private Long quizId;
     private String category;
     private String name;
     private Integer numberOfQuestions;
 
-    // Each quiz can have multiple questions.
-    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
-    private List<Question> questions;
-
-    public Quiz() {
+    public QuizDTO() {
     }
 
-    public Quiz(Long quizId, String category, String name, Integer numberOfQuestions) {
+    public QuizDTO(Long quizId, String category, String name, Integer numberOfQuestions) {
         this.quizId = quizId;
         this.category = category;
         this.name = name;
@@ -60,24 +46,11 @@ public class Quiz {
 
     public void setNumberOfQuestions(Integer numberOfQuestions) {
         this.numberOfQuestions = numberOfQuestions;
-
-        // public List<Question> getQuestions() {
-        // return this.questions;
-        // }
-
-    }
-
-    public List<Question> getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(List<Question> questions) {
-        this.questions = questions;
     }
 
     @Override
     public String toString() {
-        return "Quiz [quizId=" + quizId + ", category=" + category + ", name=" + name + ", numberOfQuestions="
+        return "QuizDTO [quizId=" + quizId + ", category=" + category + ", name=" + name + ", numberOfQuestions="
                 + numberOfQuestions + "]";
     }
 
@@ -100,7 +73,7 @@ public class Quiz {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Quiz other = (Quiz) obj;
+        QuizDTO other = (QuizDTO) obj;
         if (quizId == null) {
             if (other.quizId != null)
                 return false;
@@ -123,5 +96,4 @@ public class Quiz {
             return false;
         return true;
     }
-
 }

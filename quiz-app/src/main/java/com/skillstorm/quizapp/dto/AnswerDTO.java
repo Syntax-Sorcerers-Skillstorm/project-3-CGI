@@ -1,0 +1,74 @@
+package com.skillstorm.quizapp.dto;
+
+import com.skillstorm.quizapp.models.*;
+
+public class AnswerDTO {
+
+    private Question questionId;
+    private String answer;
+
+    public AnswerDTO() {
+    }
+
+    public AnswerDTO(Question questionId, String answer) {
+        this.questionId = questionId;
+        this.answer = answer;
+    }
+    
+
+    public Question getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(Question questionId) {
+        this.questionId = questionId;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    @Override
+    public String toString() {
+        return "AnswerDTO [questionId=" + questionId + ", answer=" + answer + "]";
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((questionId == null) ? 0 : questionId.hashCode());
+        result = prime * result + ((answer == null) ? 0 : answer.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        AnswerDTO other = (AnswerDTO) obj;
+        if (questionId == null) {
+            if (other.questionId != null)
+                return false;
+        } else if (!questionId.equals(other.questionId))
+            return false;
+        if (answer == null) {
+            if (other.answer != null)
+                return false;
+        } else if (!answer.equals(other.answer))
+            return false;
+        return true;
+    }
+
+
+    }
+
+
