@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "quizzes")
+@Table(name = "quiz")
 public class Quiz {
 
     @Id
@@ -13,6 +13,7 @@ public class Quiz {
     private String category;
     private String name;
     private Integer numberOfQuestions;
+    private String description;
 
     @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Question> questions;
@@ -20,12 +21,19 @@ public class Quiz {
     public Quiz() {
     }
 
-    public Quiz(Integer numberOfQuestions, Long quizId, String category, String name) {
+
+
+    public Quiz(Long quizId, String category, String name, Integer numberOfQuestions, String description,
+            List<Question> questions) {
         this.quizId = quizId;
         this.category = category;
         this.name = name;
         this.numberOfQuestions = numberOfQuestions;
+        this.description = description;
+        this.questions = questions;
     }
+
+
 
     public Long getQuizId() {
         return quizId;

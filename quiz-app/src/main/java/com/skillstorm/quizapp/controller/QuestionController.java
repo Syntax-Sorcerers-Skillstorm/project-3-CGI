@@ -22,7 +22,7 @@ public class QuestionController {
         return questionService.findAll();
     }
 
-    // Get question by id
+    // Get question by id....work on debugging
     @GetMapping("/{id}")
     public ResponseEntity<Question> one(@PathVariable Long id) {
         Question question = questionService.findById(id);

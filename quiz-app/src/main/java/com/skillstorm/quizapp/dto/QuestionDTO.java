@@ -2,58 +2,26 @@ package com.skillstorm.quizapp.dto;
 
 public class QuestionDTO {
         private Integer questionId;
-        private String category;
-        private String name;
-        private Integer numberOfQuestions;
+        private String questionText;
+        private String option1;
+        private String option2;
+        private String option3;
 
         public QuestionDTO() {
         }
 
-        public QuestionDTO(Integer questionId, String category, String name, Integer numberOfQuestions) {
+        public QuestionDTO(Integer questionId, String questionText, String option1, String option2, String option3) {
                 this.questionId = questionId;
-                this.category = category;
-                this.name = name;
-                this.numberOfQuestions = numberOfQuestions;
-        }
-
-        
-
-        public Integer getQuestionId() {
-                return questionId;
-        }
-
-        public void setQuestionId(Integer questionId) {
-                this.questionId = questionId;
-        }
-
-        public String getCategory() {
-                return category;
-        }
-
-        public void setCategory(String category) {
-                this.category = category;
-        }
-
-        public String getName() {
-                return name;
-        }
-
-        public void setName(String name) {
-                this.name = name;
-        }
-
-        public Integer getNumberOfQuestions() {
-                return numberOfQuestions;
-        }
-
-        public void setNumberOfQuestions(Integer numberOfQuestions) {
-                this.numberOfQuestions = numberOfQuestions;
+                this.questionText = questionText;
+                this.option1 = option1;
+                this.option2 = option2;
+                this.option3 = option3;
         }
 
         @Override
         public String toString() {
-                return "QuestionDTO [questionId=" + questionId + ", category=" + category + ", name=" + name
-                                + ", numberOfQuestions=" + numberOfQuestions + "]";
+                return "QuestionDTO [questionId=" + questionId + ", questionText=" + questionText + ", option1="
+                                + option1 + ", option2=" + option2 + ", option3=" + option3 + "]";
         }
 
         @Override
@@ -61,9 +29,10 @@ public class QuestionDTO {
                 final int prime = 31;
                 int result = 1;
                 result = prime * result + ((questionId == null) ? 0 : questionId.hashCode());
-                result = prime * result + ((category == null) ? 0 : category.hashCode());
-                result = prime * result + ((name == null) ? 0 : name.hashCode());
-                result = prime * result + ((numberOfQuestions == null) ? 0 : numberOfQuestions.hashCode());
+                result = prime * result + ((questionText == null) ? 0 : questionText.hashCode());
+                result = prime * result + ((option1 == null) ? 0 : option1.hashCode());
+                result = prime * result + ((option2 == null) ? 0 : option2.hashCode());
+                result = prime * result + ((option3 == null) ? 0 : option3.hashCode());
                 return result;
         }
 
@@ -81,22 +50,28 @@ public class QuestionDTO {
                                 return false;
                 } else if (!questionId.equals(other.questionId))
                         return false;
-                if (category == null) {
-                        if (other.category != null)
+                if (questionText == null) {
+                        if (other.questionText != null)
                                 return false;
-                } else if (!category.equals(other.category))
+                } else if (!questionText.equals(other.questionText))
                         return false;
-                if (name == null) {
-                        if (other.name != null)
+                if (option1 == null) {
+                        if (other.option1 != null)
                                 return false;
-                } else if (!name.equals(other.name))
+                } else if (!option1.equals(other.option1))
                         return false;
-                if (numberOfQuestions == null) {
-                        if (other.numberOfQuestions != null)
+                if (option2 == null) {
+                        if (other.option2 != null)
                                 return false;
-                } else if (!numberOfQuestions.equals(other.numberOfQuestions))
+                } else if (!option2.equals(other.option2))
+                        return false;
+                if (option3 == null) {
+                        if (other.option3 != null)
+                                return false;
+                } else if (!option3.equals(other.option3))
                         return false;
                 return true;
         }
+        
 
 }

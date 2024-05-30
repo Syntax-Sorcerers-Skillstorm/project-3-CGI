@@ -33,6 +33,6 @@ public class QuestionService {
     }
 
     public List<Question> findAllByQuizId(Long quizId) {
-        return questionRepo.findByQuizId(quizId);
+        return questionRepo.findByQuizQuizId(quizId);
     }
 }

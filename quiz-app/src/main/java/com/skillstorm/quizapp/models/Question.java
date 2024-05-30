@@ -3,25 +3,26 @@ package com.skillstorm.quizapp.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "questions")
+@Table(name = "question")
 public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long questionId;
+    private String category;
     private String questionText;
     private String option1;
     private String option2;
     private String option3;
     private String correctAnswer;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "quiz_id")
     private Quiz quiz;
 
     public Question() {}
 
-    public Question(Long questionId, String questionText, String option1, String option2, String option3, String correctAnswer, Quiz quiz) {
+    public Question(Long questionId, String category, String questionText, String option1, String option2, String option3, String correctAnswer, Quiz quiz) {
         this.questionId = questionId;
         this.questionText = questionText;
         this.option1 = option1;
@@ -85,6 +86,13 @@ public class Question {
 
     public void setQuiz(Quiz quiz) {
         this.quiz = quiz;
+    }
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     @Override
@@ -154,6 +162,8 @@ public class Question {
             return false;
         return true;
     }
+
+
 
     
 }

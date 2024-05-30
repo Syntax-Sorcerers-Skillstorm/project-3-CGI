@@ -3,7 +3,7 @@ package com.skillstorm.quizapp.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "answers")
+@Table(name = "answer")
 public class Answer {
 
     @Id

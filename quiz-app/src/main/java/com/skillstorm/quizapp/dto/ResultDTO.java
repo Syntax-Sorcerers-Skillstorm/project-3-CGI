@@ -6,6 +6,7 @@ public class ResultDTO {
  
         private Long userId;
         private Long quizId;
+        private String correctAnswer;
 
 
     public ResultDTO() {

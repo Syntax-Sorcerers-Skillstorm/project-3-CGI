@@ -6,5 +6,5 @@ import com.skillstorm.quizapp.models.Question;
 import java.util.List;
 
 public interface QuestionRepo extends JpaRepository<Question, Long> {
-    List<Question> findByQuizId(Long quizId);
+    List<Question> findByQuizQuizId(Long quizId);
 }
