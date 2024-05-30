@@ -3,27 +3,24 @@ package com.skillstorm.quizapp.models;
 import jakarta.persistence.*;
 import java.util.List;
 
-//encapsulates the quiz details, dto responsible forÍ transfering data between client and server
 @Entity
 @Table(name = "quizzes")
 public class Quiz {
-    // @OneToMany
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long quizId;
     private String category;
     private String name;
     private Integer numberOfQuestions;
 
-    // Each quiz can have multiple questions.
-    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Question> questions;
 
     public Quiz() {
     }
 
-    public Quiz(Long quizId, String category, String name, Integer numberOfQuestions) {
+    public Quiz(Integer numberOfQuestions, Long quizId, String category, String name) {
         this.quizId = quizId;
         this.category = category;
         this.name = name;
@@ -54,25 +51,20 @@ public class Quiz {
         this.name = name;
     }
 
-    public Integer getNumberOfQuestions() {
-        return numberOfQuestions;
-    }
-
-    public void setNumberOfQuestions(Integer numberOfQuestions) {
-        this.numberOfQuestions = numberOfQuestions;
-
-        // public List<Question> getQuestions() {
-        // return this.questions;
-        // }
-
-    }
-
     public List<Question> getQuestions() {
         return questions;
     }
 
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
+    }
+
+    public Integer getNumberOfQuestions() {
+        return numberOfQuestions;
+    }
+
+    public void setNumberOfQuestions(Integer numberOfQuestions) {
+        this.numberOfQuestions = numberOfQuestions;
     }
 
     @Override

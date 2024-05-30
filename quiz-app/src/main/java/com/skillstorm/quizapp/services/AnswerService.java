@@ -1,8 +1,11 @@
 package com.skillstorm.quizapp.services;
 
-import com.skillstorm.quizapp.dto.*;
-import com.skillstorm.quizapp.models.*;
+import com.skillstorm.quizapp.dto.AnswerDTO;
+import com.skillstorm.quizapp.dto.ResultDTO;
+import com.skillstorm.quizapp.models.Answer;
+import com.skillstorm.quizapp.models.Question;
 import com.skillstorm.quizapp.repos.AnswerRepository;
+import com.skillstorm.quizapp.repos.QuestionRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,19 +14,32 @@ import java.util.List;
 public class AnswerService {
 
     private final AnswerRepository answerRepository;
+    private final QuestionRepo questionRepo;
 
-    public AnswerService(AnswerRepository answerRepository) {
+    public AnswerService(AnswerRepository answerRepository, QuestionRepo questionRepo) {
         this.answerRepository = answerRepository;
+        this.questionRepo = questionRepo;
     }
 
     public ResultDTO gradeQuiz(List<AnswerDTO> answerDTOs) {
-        // Convert AnswerDTOs to Answer entities and save them
-        List<Answer> answers = answerDTOs.stream()
-                .map(dto -> new Answer(dto.getQuestionId(), dto.getAnswer(), dto.getUserId())) // assuming userId is null or you
-                .toList();
-        answerRepository.saveAll(answers);
+        int correctAnswersCount = 0;
+        Long quizId = null;
+        Long userId = null;
 
-        // grade the quiz and return the result
-        return new ResultDTO();
+        for (AnswerDTO answerDTO : answerDTOs) {
+            Question question = questionRepo.findById(answerDTO.getQuestionId()).orElse(null);
+            if (question != null) {
+                quizId = question.getQuiz().getQuizId();
+                if (question.getCorrectAnswer().equalsIgnoreCase(answerDTO.getAnswer())) {
+                    correctAnswersCount++;
+                }
+            }
+        }
+
+        ResultDTO result = new ResultDTO();
+        result.setQuizId(quizId);
+        result.setUserId(userId);
+        result.setScore(correctAnswersCount);
+        return result;
     }
 }

@@ -1,44 +1,34 @@
 package com.skillstorm.quizapp.models;
 
 import jakarta.persistence.*;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import java.util.List;
 
 @Entity
 @Table(name = "questions")
 public class Question {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long questionId;
-
-    private String category;
-    private String question;
+    private String questionText;
     private String option1;
     private String option2;
     private String option3;
     private String correctAnswer;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "quiz_id")
     private Quiz quiz;
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
-    private List<Answer> answers;
+    public Question() {}
 
-
-    public Question() {
-    }
-
-    public Question(Long questionId, String category, String question, String option1, String option2, String option3,
-            String correctAnswer) {
+    public Question(Long questionId, String questionText, String option1, String option2, String option3, String correctAnswer, Quiz quiz) {
         this.questionId = questionId;
-        this.category = category;
-        this.question = question;
+        this.questionText = questionText;
         this.option1 = option1;
         this.option2 = option2;
         this.option3 = option3;
         this.correctAnswer = correctAnswer;
+        this.quiz = quiz;
     }
 
     public Long getQuestionId() {
@@ -49,20 +39,12 @@ public class Question {
         this.questionId = questionId;
     }
 
-    public String getCategory() {
-        return category;
+    public String getQuestionText() {
+        return questionText;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
+    public void setQuestionText(String questionText) {
+        this.questionText = questionText;
     }
 
     public String getOption1() {
@@ -97,10 +79,19 @@ public class Question {
         this.correctAnswer = correctAnswer;
     }
 
+    public Quiz getQuiz() {
+        return quiz;
+    }
+
+    public void setQuiz(Quiz quiz) {
+        this.quiz = quiz;
+    }
+
     @Override
     public String toString() {
-        return "Question [questionId=" + questionId + ", category=" + category + ", question=" + question + ", option1="
-                + option1 + ", option2=" + option2 + ", option3=" + option3 + ", correctAnswer=" + correctAnswer + "]";
+        return "Question [questionId=" + questionId + ", questionText=" + questionText + ", option1=" + option1
+                + ", option2=" + option2 + ", option3=" + option3 + ", correctAnswer=" + correctAnswer + ", quiz="
+                + quiz + "]";
     }
 
     @Override
@@ -108,12 +99,12 @@ public class Question {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((questionId == null) ? 0 : questionId.hashCode());
-        result = prime * result + ((category == null) ? 0 : category.hashCode());
-        result = prime * result + ((question == null) ? 0 : question.hashCode());
+        result = prime * result + ((questionText == null) ? 0 : questionText.hashCode());
         result = prime * result + ((option1 == null) ? 0 : option1.hashCode());
         result = prime * result + ((option2 == null) ? 0 : option2.hashCode());
         result = prime * result + ((option3 == null) ? 0 : option3.hashCode());
         result = prime * result + ((correctAnswer == null) ? 0 : correctAnswer.hashCode());
+        result = prime * result + ((quiz == null) ? 0 : quiz.hashCode());
         return result;
     }
 
@@ -131,15 +122,10 @@ public class Question {
                 return false;
         } else if (!questionId.equals(other.questionId))
             return false;
-        if (category == null) {
-            if (other.category != null)
+        if (questionText == null) {
+            if (other.questionText != null)
                 return false;
-        } else if (!category.equals(other.category))
-            return false;
-        if (question == null) {
-            if (other.question != null)
-                return false;
-        } else if (!question.equals(other.question))
+        } else if (!questionText.equals(other.questionText))
             return false;
         if (option1 == null) {
             if (other.option1 != null)
@@ -161,15 +147,13 @@ public class Question {
                 return false;
         } else if (!correctAnswer.equals(other.correctAnswer))
             return false;
+        if (quiz == null) {
+            if (other.quiz != null)
+                return false;
+        } else if (!quiz.equals(other.quiz))
+            return false;
         return true;
     }
 
-    public Quiz getQuiz() {
-        return quiz;
-    }
-
-    public void setQuiz(Quiz quiz) {
-        this.quiz = quiz;
-    }
-
+    
 }

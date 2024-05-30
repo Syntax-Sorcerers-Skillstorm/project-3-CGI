@@ -1,6 +1,6 @@
 package com.skillstorm.quizapp.dto;
 
-
+//change answerText in others
 public class AnswerDTO {
 
     private Long questionId;

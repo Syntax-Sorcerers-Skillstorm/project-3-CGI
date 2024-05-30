@@ -12,8 +12,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AnswerRepository extends JpaRepository<Answer, Long> {
-    List<Question> findByCategory(String category);
+    // List<Question> findByCategory(String category);
 
-        @Query(value = "SELECT * FROM question q WHERE q.category = :category ORDER BY RANDOM() LIMIT :numQ", nativeQuery = true)
-    List<Question> findRandomQuestionsByCategory(String category, Integer numQ);
+    //     @Query(value = "SELECT * FROM question q WHERE q.category = :category ORDER BY RANDOM() LIMIT :numQ", nativeQuery = true)
+    // List<Question> findRandomQuestionsByCategory(String category, Integer numQ);
 }

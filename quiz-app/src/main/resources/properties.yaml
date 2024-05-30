@@ -1,8 +1,8 @@
-# spring:
-#     datasource:
-#         url: ${dburl}
-#         username: ${dbuser}
-#         password: ${dbpwd}
-#     jpa:
-#         hibernate:
-            # ddl-auto: validate
+spring:
+    datasource:
+        url: ${dburl}
+        username: ${dbuser}
+        password: ${dbpwd}
+    jpa:
+        hibernate:
+            ddl-auto: validate

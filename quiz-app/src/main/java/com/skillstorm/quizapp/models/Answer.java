@@ -10,64 +10,29 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long answerId;
 
-    // @Column(nullable = false)
-    // private Long questionId;
-    
     @ManyToOne
-    @JoinColumn(name = "question_id", referencedColumnName = "questionId")
-    private Question questionId;
+    @JoinColumn(name = "question_id")
+    private Question question;
 
     @Column(nullable = false)
     private String answer;
 
     @Column(nullable = false)
-    private Long userId; // keep track of which user submitted the answer
+    private Long userId;
 
-    public Answer() {
-    }
+    public Answer() {}
 
-    public Answer(Long long1, String answer, Long userId) {
-        this.questionId = questionId;
-        this.answer = answer;
-        this.userId = userId;
-    }
-
-    public Long getAnswerId() {
-        return answerId;
-    }
-
-    public void setAnswerId(Long answerId) {
+    public Answer(Long answerId, Question question, String answer, Long userId) {
         this.answerId = answerId;
-    }
-
-    public Question getQuestionId() {
-        return questionId;
-    }
-
-    public void setQuestionId(Question questionId) {
-        this.questionId = questionId;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
+        this.question = question;
         this.answer = answer;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
     @Override
     public String toString() {
-        return "Answer [answerId=" + answerId + ", questionId=" + questionId + ", answer=" + answer + ", userId="
-                + userId + "]";
+        return "Answer [answerId=" + answerId + ", question=" + question + ", answer=" + answer + ", userId=" + userId
+                + "]";
     }
 
     @Override
@@ -75,7 +40,7 @@ public class Answer {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((answerId == null) ? 0 : answerId.hashCode());
-        result = prime * result + ((questionId == null) ? 0 : questionId.hashCode());
+        result = prime * result + ((question == null) ? 0 : question.hashCode());
         result = prime * result + ((answer == null) ? 0 : answer.hashCode());
         result = prime * result + ((userId == null) ? 0 : userId.hashCode());
         return result;
@@ -95,10 +60,10 @@ public class Answer {
                 return false;
         } else if (!answerId.equals(other.answerId))
             return false;
-        if (questionId == null) {
-            if (other.questionId != null)
+        if (question == null) {
+            if (other.question != null)
                 return false;
-        } else if (!questionId.equals(other.questionId))
+        } else if (!question.equals(other.question))
             return false;
         if (answer == null) {
             if (other.answer != null)
@@ -113,4 +78,7 @@ public class Answer {
         return true;
     }
 
+    
+
+    
 }

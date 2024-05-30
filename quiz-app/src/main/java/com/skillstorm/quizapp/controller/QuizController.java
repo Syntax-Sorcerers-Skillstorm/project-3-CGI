@@ -1,10 +1,11 @@
 package com.skillstorm.quizapp.controller;
-import java.util.List;
+
+import com.skillstorm.quizapp.dto.QuizDTO;
+import com.skillstorm.quizapp.services.QuizService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.skillstorm.quizapp.dto.*;
-import com.skillstorm.quizapp.services.QuizService;
 
+import java.util.List;
 
 @RestController
 @RequestMapping("/quizzes")
@@ -21,14 +22,8 @@ public class QuizController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<QuizDTO> getQuizById(@PathVariable Long quizId) {
-        QuizDTO quiz = quizService.findById(quizId);
+    public ResponseEntity<QuizDTO> getQuizById(@PathVariable Long id) {
+        QuizDTO quiz = quizService.findById(id);
         return quiz != null ? ResponseEntity.ok(quiz) : ResponseEntity.notFound().build();
-    }
-
-    @PostMapping("/submit")
-    public ResponseEntity<ResultDTO> submitQuiz(@RequestBody List<AnswerDTO> answer) {
-        ResultDTO result = quizService.gradeQuiz(answer);
-        return ResponseEntity.ok(result);
     }
 }
