@@ -35,4 +35,8 @@ public class QuestionService {
     public List<Question> findAllByQuizId(Long quizId) {
         return questionRepo.findByQuizQuizId(quizId);
     }
+
+    public List<Question> findRandomQuestionsByCategory(String category, int numQ) {
+        return questionRepo.findRandomQuestionsByCategory(category,numQ);
+    }
 }

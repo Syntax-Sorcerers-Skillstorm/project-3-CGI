@@ -21,8 +21,6 @@ public class Quiz {
     public Quiz() {
     }
 
-
-
     public Quiz(Long quizId, String category, String name, Integer numberOfQuestions, String description,
             List<Question> questions) {
         this.quizId = quizId;
@@ -33,7 +31,7 @@ public class Quiz {
         this.questions = questions;
     }
 
-
+    
 
     public Long getQuizId() {
         return quizId;
@@ -59,14 +57,6 @@ public class Quiz {
         this.name = name;
     }
 
-    public List<Question> getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(List<Question> questions) {
-        this.questions = questions;
-    }
-
     public Integer getNumberOfQuestions() {
         return numberOfQuestions;
     }
@@ -75,10 +65,26 @@ public class Quiz {
         this.numberOfQuestions = numberOfQuestions;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
+
     @Override
     public String toString() {
         return "Quiz [quizId=" + quizId + ", category=" + category + ", name=" + name + ", numberOfQuestions="
-                + numberOfQuestions + "]";
+                + numberOfQuestions + ", description=" + description + ", questions=" + questions + "]";
     }
 
     @Override
@@ -89,6 +95,8 @@ public class Quiz {
         result = prime * result + ((category == null) ? 0 : category.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + ((numberOfQuestions == null) ? 0 : numberOfQuestions.hashCode());
+        result = prime * result + ((description == null) ? 0 : description.hashCode());
+        result = prime * result + ((questions == null) ? 0 : questions.hashCode());
         return result;
     }
 
@@ -121,7 +129,20 @@ public class Quiz {
                 return false;
         } else if (!numberOfQuestions.equals(other.numberOfQuestions))
             return false;
+        if (description == null) {
+            if (other.description != null)
+                return false;
+        } else if (!description.equals(other.description))
+            return false;
+        if (questions == null) {
+            if (other.questions != null)
+                return false;
+        } else if (!questions.equals(other.questions))
+            return false;
         return true;
     }
+
+
+
 
 }

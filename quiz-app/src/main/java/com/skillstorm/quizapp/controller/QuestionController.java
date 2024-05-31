@@ -17,7 +17,7 @@ public class QuestionController {
     }
 
     // Get list of all questions
-    @GetMapping //filter by quiz instead of all
+    @GetMapping // filter by quiz instead of all
     public List<Question> all() {
         return questionService.findAll();
     }
@@ -32,7 +32,7 @@ public class QuestionController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
-    
+
     // Add question
     @PostMapping
     public ResponseEntity<Question> newQuestion(@RequestBody Question newQuestion) {
@@ -56,11 +56,17 @@ public class QuestionController {
     // Delete question
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteQuestion(@PathVariable Long id) {
-        if (questionService.findById(id) != null) { 
+        if (questionService.findById(id) != null) {
             questionService.deleteById(id);
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+    }
+
+    @GetMapping("/category/{category}")
+    public ResponseEntity<List<Question>> getRandomQuestionsByCategory(@PathVariable String category) {
+        List<Question> questions = questionService.findRandomQuestionsByCategory(category, 10);
+        return ResponseEntity.ok(questions);
     }
 }

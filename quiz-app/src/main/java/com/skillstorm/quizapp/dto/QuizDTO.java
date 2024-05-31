@@ -5,15 +5,17 @@ public class QuizDTO {
     private String category;
     private String name;
     private Integer numberOfQuestions;
+    private String description;
 
     public QuizDTO() {
     }
 
-    public QuizDTO(Long quizId, String category, String name, Integer numberOfQuestions) {
+    public QuizDTO(String description, Long quizId, String category, String name, Integer numberOfQuestions) {
         this.quizId = quizId;
         this.category = category;
         this.name = name;
         this.numberOfQuestions = numberOfQuestions;
+        this.description = description;
     }
 
     public Long getQuizId() {
@@ -48,10 +50,18 @@ public class QuizDTO {
         this.numberOfQuestions = numberOfQuestions;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "QuizDTO [quizId=" + quizId + ", category=" + category + ", name=" + name + ", numberOfQuestions="
-                + numberOfQuestions + "]";
+                + numberOfQuestions + ", description=" + description + "]";
     }
 
     @Override
@@ -62,6 +72,7 @@ public class QuizDTO {
         result = prime * result + ((category == null) ? 0 : category.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + ((numberOfQuestions == null) ? 0 : numberOfQuestions.hashCode());
+        result = prime * result + ((description == null) ? 0 : description.hashCode());
         return result;
     }
 
@@ -94,6 +105,12 @@ public class QuizDTO {
                 return false;
         } else if (!numberOfQuestions.equals(other.numberOfQuestions))
             return false;
+        if (description == null) {
+            if (other.description != null)
+                return false;
+        } else if (!description.equals(other.description))
+            return false;
         return true;
     }
+
 }
