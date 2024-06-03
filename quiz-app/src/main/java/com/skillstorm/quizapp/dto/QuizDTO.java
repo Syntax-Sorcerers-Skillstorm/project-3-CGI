@@ -2,15 +2,15 @@ package com.skillstorm.quizapp.dto;
 
 public class QuizDTO {
     private Long quizId;
-    private String categoryId;
+    private Long categoryId;
     private String name;
     private Integer numberOfQuestions;
     private String description;
-
+    
     public QuizDTO() {
     }
 
-    public QuizDTO(String description, Long quizId, String categoryId, String name, Integer numberOfQuestions) {
+    public QuizDTO(Long quizId, Long categoryId, String name, Integer numberOfQuestions, String description) {
         this.quizId = quizId;
         this.categoryId = categoryId;
         this.name = name;
@@ -26,11 +26,11 @@ public class QuizDTO {
         this.quizId = quizId;
     }
 
-    public String getCategoryId() {
+    public Long getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(String categoryId) {
+    public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
     }
 
@@ -112,5 +112,7 @@ public class QuizDTO {
             return false;
         return true;
     }
+
+    
 
 }

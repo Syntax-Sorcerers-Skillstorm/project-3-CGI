@@ -1,20 +1,18 @@
 package com.skillstorm.quizapp.dto;
 
-import com.skillstorm.quizapp.models.Category;
 
 public class QuestionDTO {
-        private Integer questionId;
-        private Category categoryId;
+        private Long questionId;
+        private Long categoryId;
         private String questionText;
         private String option1;
         private String option2;
         private String option3;
 
-        public Integer getQuestionId() {
-                return questionId;
+        public QuestionDTO() {
         }
 
-        public QuestionDTO(Integer questionId, Category categoryId, String questionText, String option1, String option2,
+        public QuestionDTO(Long questionId, Long categoryId, String questionText, String option1, String option2,
                         String option3) {
                 this.questionId = questionId;
                 this.categoryId = categoryId;
@@ -24,15 +22,19 @@ public class QuestionDTO {
                 this.option3 = option3;
         }
 
-        public void setQuestionId(Integer questionId) {
+        public Long getQuestionId() {
+                return questionId;
+        }
+
+        public void setQuestionId(Long questionId) {
                 this.questionId = questionId;
         }
 
-        public Category getCategoryId() {
+        public Long getCategoryId() {
                 return categoryId;
         }
 
-        public void setCategoryId(Category categoryId) {
+        public void setCategoryId(Long categoryId) {
                 this.categoryId = categoryId;
         }
 
@@ -68,14 +70,11 @@ public class QuestionDTO {
                 this.option3 = option3;
         }
 
-        public QuestionDTO() {
-        }
-
-
         @Override
         public String toString() {
-                return "QuestionDTO [questionId=" + questionId + ", questionText=" + questionText + ", option1="
-                                + option1 + ", option2=" + option2 + ", option3=" + option3 + "]";
+                return "QuestionDTO [questionId=" + questionId + ", categoryId=" + categoryId + ", questionText="
+                                + questionText + ", option1=" + option1 + ", option2=" + option2 + ", option3="
+                                + option3 + "]";
         }
 
         @Override
@@ -83,6 +82,7 @@ public class QuestionDTO {
                 final int prime = 31;
                 int result = 1;
                 result = prime * result + ((questionId == null) ? 0 : questionId.hashCode());
+                result = prime * result + ((categoryId == null) ? 0 : categoryId.hashCode());
                 result = prime * result + ((questionText == null) ? 0 : questionText.hashCode());
                 result = prime * result + ((option1 == null) ? 0 : option1.hashCode());
                 result = prime * result + ((option2 == null) ? 0 : option2.hashCode());
@@ -103,6 +103,11 @@ public class QuestionDTO {
                         if (other.questionId != null)
                                 return false;
                 } else if (!questionId.equals(other.questionId))
+                        return false;
+                if (categoryId == null) {
+                        if (other.categoryId != null)
+                                return false;
+                } else if (!categoryId.equals(other.categoryId))
                         return false;
                 if (questionText == null) {
                         if (other.questionText != null)
@@ -126,6 +131,8 @@ public class QuestionDTO {
                         return false;
                 return true;
         }
+
+        
         
 
 }

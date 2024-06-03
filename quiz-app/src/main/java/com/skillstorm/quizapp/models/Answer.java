@@ -17,7 +17,8 @@ public class Answer {
     @Column(nullable = false)
     private String answer;
 
-    public Answer() {}
+    public Answer() {
+    }
 
     public Answer(Long answerId, Question question, String answer) {
         this.answerId = answerId;
@@ -91,5 +92,6 @@ public class Answer {
         return true;
     }
 
+    
     
 }

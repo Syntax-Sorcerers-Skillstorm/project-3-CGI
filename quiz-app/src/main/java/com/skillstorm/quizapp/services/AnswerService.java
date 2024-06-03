@@ -1,10 +1,9 @@
 package com.skillstorm.quizapp.services;
 
-import com.skillstorm.quizapp.dto.AnswerDTO;
-import com.skillstorm.quizapp.dto.ResultDTO;
+import com.skillstorm.quizapp.dto.*;
 import com.skillstorm.quizapp.models.Question;
-import com.skillstorm.quizapp.repos.AnswerRepository;
-import com.skillstorm.quizapp.repos.QuestionRepo;
+
+import com.skillstorm.quizapp.repos.*;
 import org.springframework.stereotype.Service;
 import java.util.List;
 

@@ -4,8 +4,8 @@ import java.util.List;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
-import com.skillstorm.quizapp.models.Category;
-import com.skillstorm.quizapp.models.Question;
+import com.skillstorm.quizapp.models.*;
+
 import com.skillstorm.quizapp.services.QuestionService;
 
 @RestController
@@ -23,8 +23,8 @@ public class QuestionController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Question> one(@PathVariable Long id) {
-        Question question = questionService.findById(id);
+    public ResponseEntity<Question> one(@PathVariable Long questionId) {
+        Question question = questionService.findById(questionId);
         if (question != null) {
             return ResponseEntity.ok(question);
         } else {
@@ -32,42 +32,10 @@ public class QuestionController {
         }
     }
 
-    @PostMapping
-    public ResponseEntity<Question> newQuestion(@RequestBody Question newQuestion) {
-        Question question = questionService.save(newQuestion);
-        return ResponseEntity.status(HttpStatus.CREATED).body(question);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Question> updateQuestion(@RequestBody Question updatedQuestion, @PathVariable Long id) {
-        Question question = questionService.findById(id);
-        if (question != null) {
-            updatedQuestion.setQuestionId(id);
-            questionService.save(updatedQuestion);
-            return ResponseEntity.ok(updatedQuestion);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteQuestion(@PathVariable Long id) {
-        if (questionService.findById(id) != null) {
-            questionService.deleteById(id);
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-    }
-
-    // @GetMapping("/category/{category}")
-    // public ResponseEntity<List<Question>> getRandomQuestionsByCategory(@PathVariable String category) {
-    //     List<Question> questions = questionService.findRandomQuestionsByCategory(category, 10);
-    //     return ResponseEntity.ok(questions);
     @GetMapping("/category/{categoryId}")
-    public ResponseEntity<List<Question>> getRandomQuestionsByCategory(@PathVariable Category categoryId) {
+    public ResponseEntity<List<Question>> getRandomQuestionsByCategory(@PathVariable Long categoryId) {
         List<Question> questions = questionService.findRandomQuestionsByCategory(categoryId);
         return ResponseEntity.ok(questions);
     }
-    // }
+
 }

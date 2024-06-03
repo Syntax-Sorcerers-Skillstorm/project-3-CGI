@@ -18,7 +18,8 @@ public class Question {
     private String option3;
     private String correctAnswer;
 
-    public Question() {}
+    public Question() {
+    }
 
     public Question(Long questionId, Category categoryId, String questionText, String option1, String option2,
             String option3, String correctAnswer) {
@@ -155,6 +156,7 @@ public class Question {
         return true;
     }
 
-
     
+
 }
+

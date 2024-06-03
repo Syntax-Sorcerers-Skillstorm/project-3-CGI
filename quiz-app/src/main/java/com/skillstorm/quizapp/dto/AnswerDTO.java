@@ -4,7 +4,7 @@ public class AnswerDTO {
 
     private Long questionId;
     private String answer;
-
+    
     public AnswerDTO() {
     }
 
@@ -64,4 +64,7 @@ public class AnswerDTO {
             return false;
         return true;
     }
+
+
+    
 }

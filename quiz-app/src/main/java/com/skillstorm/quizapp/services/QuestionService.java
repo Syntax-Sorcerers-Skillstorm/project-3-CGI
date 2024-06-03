@@ -4,8 +4,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-import com.skillstorm.quizapp.models.Category;
-import com.skillstorm.quizapp.models.Question;
+import com.skillstorm.quizapp.models.*;
 import com.skillstorm.quizapp.repos.QuestionRepo;
 
 @Service
@@ -25,19 +24,7 @@ public class QuestionService {
         return question.orElse(null);
     }
 
-    public Question save(Question question) {
-        return questionRepo.save(question);
-    }
-
-    public void deleteById(Long questionId) {
-        questionRepo.deleteById(questionId);
-    }
-
-    // public List<Question> findRandomQuestionsByCategory(String category, int numQ) {
-    //     return questionRepo.findRandomQuestionsByCategory(category, numQ);
-    // }
-
-    public List<Question> findRandomQuestionsByCategory(Category categoryId) {
+    public List<Question> findRandomQuestionsByCategory(Long categoryId) {
         return questionRepo.findRandomQuestionsByCategory(categoryId);
     }
 }

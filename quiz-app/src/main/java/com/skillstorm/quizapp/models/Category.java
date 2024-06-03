@@ -3,6 +3,8 @@ package com.skillstorm.quizapp.models;
 import jakarta.persistence.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Category {
     @Id
@@ -10,9 +12,10 @@ public class Category {
     Long categoryId;
     String name; // Java Basics, HTML/CSS, Angular, JavaScript
     String description;
+    @JsonIgnore
     @OneToMany(mappedBy = "categoryId")
     private List<Question> questions;
-
+    
     public Category() {
     }
 
@@ -47,9 +50,18 @@ public class Category {
         this.description = description;
     }
 
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
+
     @Override
     public String toString() {
-        return "Category [categoryId=" + categoryId + ", name=" + name + ", description=" + description + "]";
+        return "Category [categoryId=" + categoryId + ", name=" + name + ", description=" + description + ", questions="
+                + questions + "]";
     }
 
     @Override
@@ -59,6 +71,7 @@ public class Category {
         result = prime * result + ((categoryId == null) ? 0 : categoryId.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + ((description == null) ? 0 : description.hashCode());
+        result = prime * result + ((questions == null) ? 0 : questions.hashCode());
         return result;
     }
 
@@ -86,15 +99,14 @@ public class Category {
                 return false;
         } else if (!description.equals(other.description))
             return false;
+        if (questions == null) {
+            if (other.questions != null)
+                return false;
+        } else if (!questions.equals(other.questions))
+            return false;
         return true;
     }
 
-    public List<Question> getQuestions() {
-        return questions;
-    }
 
-    public void setQuestions(List<Question> questions) {
-        this.questions = questions;
-    }
-
+    
 }

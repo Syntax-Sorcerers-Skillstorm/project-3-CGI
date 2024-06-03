@@ -3,6 +3,13 @@ package com.skillstorm.quizapp.dto;
 public class ResultDTO {
     private int score;
 
+    public ResultDTO() {
+    }
+
+    public ResultDTO(int score) {
+        this.score = score;
+    }
+
     public int getScore() {
         return score;
     }
@@ -37,5 +44,6 @@ public class ResultDTO {
             return false;
         return true;
     }
+
     
 }
