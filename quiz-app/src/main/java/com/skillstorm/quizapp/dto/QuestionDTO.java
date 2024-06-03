@@ -1,22 +1,76 @@
 package com.skillstorm.quizapp.dto;
 
+import com.skillstorm.quizapp.models.Category;
+
 public class QuestionDTO {
         private Integer questionId;
+        private Category categoryId;
         private String questionText;
         private String option1;
         private String option2;
         private String option3;
 
-        public QuestionDTO() {
+        public Integer getQuestionId() {
+                return questionId;
         }
 
-        public QuestionDTO(Integer questionId, String questionText, String option1, String option2, String option3) {
+        public QuestionDTO(Integer questionId, Category categoryId, String questionText, String option1, String option2,
+                        String option3) {
                 this.questionId = questionId;
+                this.categoryId = categoryId;
                 this.questionText = questionText;
                 this.option1 = option1;
                 this.option2 = option2;
                 this.option3 = option3;
         }
+
+        public void setQuestionId(Integer questionId) {
+                this.questionId = questionId;
+        }
+
+        public Category getCategoryId() {
+                return categoryId;
+        }
+
+        public void setCategoryId(Category categoryId) {
+                this.categoryId = categoryId;
+        }
+
+        public String getQuestionText() {
+                return questionText;
+        }
+
+        public void setQuestionText(String questionText) {
+                this.questionText = questionText;
+        }
+
+        public String getOption1() {
+                return option1;
+        }
+
+        public void setOption1(String option1) {
+                this.option1 = option1;
+        }
+
+        public String getOption2() {
+                return option2;
+        }
+
+        public void setOption2(String option2) {
+                this.option2 = option2;
+        }
+
+        public String getOption3() {
+                return option3;
+        }
+
+        public void setOption3(String option3) {
+                this.option3 = option3;
+        }
+
+        public QuestionDTO() {
+        }
+
 
         @Override
         public String toString() {

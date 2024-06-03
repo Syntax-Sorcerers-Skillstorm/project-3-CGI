@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
+import com.skillstorm.quizapp.models.Category;
 import com.skillstorm.quizapp.models.Question;
 import com.skillstorm.quizapp.services.QuestionService;
 
@@ -63,9 +64,9 @@ public class QuestionController {
     // public ResponseEntity<List<Question>> getRandomQuestionsByCategory(@PathVariable String category) {
     //     List<Question> questions = questionService.findRandomQuestionsByCategory(category, 10);
     //     return ResponseEntity.ok(questions);
-    @GetMapping("/category/{category}")
-    public ResponseEntity<List<Question>> getRandomQuestionsByCategory(@PathVariable Category category) {
-        List<Question> questions = questionService.findRandomQuestionsByCategory(category, 10);
+    @GetMapping("/category/{categoryId}")
+    public ResponseEntity<List<Question>> getRandomQuestionsByCategory(@PathVariable Category categoryId) {
+        List<Question> questions = questionService.findRandomQuestionsByCategory(categoryId);
         return ResponseEntity.ok(questions);
     }
     // }

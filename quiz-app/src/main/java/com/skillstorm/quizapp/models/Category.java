@@ -10,7 +10,7 @@ public class Category {
     Long categoryId;
     String name; // Java Basics, HTML/CSS, Angular, JavaScript
     String description;
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "categoryId")
     private List<Question> questions;
 
     public Category() {

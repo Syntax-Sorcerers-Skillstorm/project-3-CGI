@@ -2,7 +2,7 @@ package com.skillstorm.quizapp.dto;
 
 public class QuizDTO {
     private Long quizId;
-    private String category;
+    private String categoryId;
     private String name;
     private Integer numberOfQuestions;
     private String description;
@@ -10,9 +10,9 @@ public class QuizDTO {
     public QuizDTO() {
     }
 
-    public QuizDTO(String description, Long quizId, String category, String name, Integer numberOfQuestions) {
+    public QuizDTO(String description, Long quizId, String categoryId, String name, Integer numberOfQuestions) {
         this.quizId = quizId;
-        this.category = category;
+        this.categoryId = categoryId;
         this.name = name;
         this.numberOfQuestions = numberOfQuestions;
         this.description = description;
@@ -26,12 +26,12 @@ public class QuizDTO {
         this.quizId = quizId;
     }
 
-    public String getCategory() {
-        return category;
+    public String getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getName() {
@@ -60,7 +60,7 @@ public class QuizDTO {
 
     @Override
     public String toString() {
-        return "QuizDTO [quizId=" + quizId + ", category=" + category + ", name=" + name + ", numberOfQuestions="
+        return "QuizDTO [quizId=" + quizId + ", categoryId=" + categoryId + ", name=" + name + ", numberOfQuestions="
                 + numberOfQuestions + ", description=" + description + "]";
     }
 
@@ -69,7 +69,7 @@ public class QuizDTO {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((quizId == null) ? 0 : quizId.hashCode());
-        result = prime * result + ((category == null) ? 0 : category.hashCode());
+        result = prime * result + ((categoryId == null) ? 0 : categoryId.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + ((numberOfQuestions == null) ? 0 : numberOfQuestions.hashCode());
         result = prime * result + ((description == null) ? 0 : description.hashCode());
@@ -90,10 +90,10 @@ public class QuizDTO {
                 return false;
         } else if (!quizId.equals(other.quizId))
             return false;
-        if (category == null) {
-            if (other.category != null)
+        if (categoryId == null) {
+            if (other.categoryId != null)
                 return false;
-        } else if (!category.equals(other.category))
+        } else if (!categoryId.equals(other.categoryId))
             return false;
         if (name == null) {
             if (other.name != null)

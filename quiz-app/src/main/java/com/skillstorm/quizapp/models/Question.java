@@ -10,8 +10,8 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long questionId;
     @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
-    private Category category;
+    @JoinColumn(name = "categoryId", nullable = false)
+    private Category categoryId;
     private String questionText;
     private String option1;
     private String option2;
@@ -20,10 +20,10 @@ public class Question {
 
     public Question() {}
 
-    public Question(Long questionId, Category category, String questionText, String option1, String option2,
+    public Question(Long questionId, Category categoryId, String questionText, String option1, String option2,
             String option3, String correctAnswer) {
         this.questionId = questionId;
-        this.category = category;
+        this.categoryId = categoryId;
         this.questionText = questionText;
         this.option1 = option1;
         this.option2 = option2;
@@ -39,12 +39,12 @@ public class Question {
         this.questionId = questionId;
     }
 
-    public Category getCategory() {
-        return category;
+    public Category getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryId(Category categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getQuestionText() {
@@ -89,7 +89,7 @@ public class Question {
 
     @Override
     public String toString() {
-        return "Question [questionId=" + questionId + ", category=" + category + ", questionText=" + questionText
+        return "Question [questionId=" + questionId + ", categoryId=" + categoryId + ", questionText=" + questionText
                 + ", option1=" + option1 + ", option2=" + option2 + ", option3=" + option3 + ", correctAnswer="
                 + correctAnswer + "]";
     }
@@ -99,7 +99,7 @@ public class Question {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((questionId == null) ? 0 : questionId.hashCode());
-        result = prime * result + ((category == null) ? 0 : category.hashCode());
+        result = prime * result + ((categoryId == null) ? 0 : categoryId.hashCode());
         result = prime * result + ((questionText == null) ? 0 : questionText.hashCode());
         result = prime * result + ((option1 == null) ? 0 : option1.hashCode());
         result = prime * result + ((option2 == null) ? 0 : option2.hashCode());
@@ -122,10 +122,10 @@ public class Question {
                 return false;
         } else if (!questionId.equals(other.questionId))
             return false;
-        if (category == null) {
-            if (other.category != null)
+        if (categoryId == null) {
+            if (other.categoryId != null)
                 return false;
-        } else if (!category.equals(other.category))
+        } else if (!categoryId.equals(other.categoryId))
             return false;
         if (questionText == null) {
             if (other.questionText != null)

@@ -3,6 +3,8 @@ package com.skillstorm.quizapp.services;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+
+import com.skillstorm.quizapp.models.Category;
 import com.skillstorm.quizapp.models.Question;
 import com.skillstorm.quizapp.repos.QuestionRepo;
 
@@ -35,7 +37,7 @@ public class QuestionService {
     //     return questionRepo.findRandomQuestionsByCategory(category, numQ);
     // }
 
-    public List<Question> findRandomQuestionsByCategory(String category) {
-        return questionRepo.findRandomQuestionsByCategory(category, 10);
+    public List<Question> findRandomQuestionsByCategory(Category categoryId) {
+        return questionRepo.findRandomQuestionsByCategory(categoryId);
     }
 }
