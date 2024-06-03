@@ -1,11 +1,11 @@
 package com.skillstorm.quizapp.controller;
 
 import java.util.List;
+
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
-import com.skillstorm.quizapp.models.*;
-
+import com.skillstorm.quizapp.dto.QuestionDTO;
 import com.skillstorm.quizapp.services.QuestionService;
 
 @RestController
@@ -18,24 +18,23 @@ public class QuestionController {
     }
 
     @GetMapping
-    public List<Question> all() {
+    public List<QuestionDTO> all() {
         return questionService.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Question> one(@PathVariable Long questionId) {
-        Question question = questionService.findById(questionId);
-        if (question != null) {
-            return ResponseEntity.ok(question);
+    public ResponseEntity<QuestionDTO> one(@PathVariable Long id) {
+        QuestionDTO questionDTO = questionService.findById(id);
+        if (questionDTO != null) {
+            return ResponseEntity.ok(questionDTO);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
 
     @GetMapping("/category/{categoryId}")
-    public ResponseEntity<List<Question>> getRandomQuestionsByCategory(@PathVariable Long categoryId) {
-        List<Question> questions = questionService.findRandomQuestionsByCategory(categoryId);
+    public ResponseEntity<List<QuestionDTO>> getRandomQuestionsByCategory(@PathVariable Long categoryId) {
+        List<QuestionDTO> questions = questionService.findRandomQuestionsByCategory(categoryId);
         return ResponseEntity.ok(questions);
     }
-
 }
