@@ -1,11 +1,9 @@
 package com.skillstorm.quizapp.dto;
 
-//change answerText in others
 public class AnswerDTO {
 
     private Long questionId;
     private String answer;
-    private Long userId;
 
     public AnswerDTO() {
     }
@@ -14,7 +12,6 @@ public class AnswerDTO {
         this.questionId = questionId;
         this.answer = answer;
     }
-    
 
     public Long getQuestionId() {
         return questionId;
@@ -67,16 +64,4 @@ public class AnswerDTO {
             return false;
         return true;
     }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-
-    }
-
-
+}

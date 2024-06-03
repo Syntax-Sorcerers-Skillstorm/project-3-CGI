@@ -16,13 +16,11 @@ public class QuestionController {
         this.questionService = questionService;
     }
 
-    // Get list of all questions
-    @GetMapping // filter by quiz instead of all
+    @GetMapping
     public List<Question> all() {
         return questionService.findAll();
     }
 
-    // Get question by id....work on debugging
     @GetMapping("/{id}")
     public ResponseEntity<Question> one(@PathVariable Long id) {
         Question question = questionService.findById(id);
@@ -33,19 +31,17 @@ public class QuestionController {
         }
     }
 
-    // Add question
     @PostMapping
     public ResponseEntity<Question> newQuestion(@RequestBody Question newQuestion) {
         Question question = questionService.save(newQuestion);
         return ResponseEntity.status(HttpStatus.CREATED).body(question);
     }
 
-    // Edit question
     @PutMapping("/{id}")
     public ResponseEntity<Question> updateQuestion(@RequestBody Question updatedQuestion, @PathVariable Long id) {
         Question question = questionService.findById(id);
         if (question != null) {
-            updatedQuestion.setQuestionId(id); // Ensure the ID is set correctly
+            updatedQuestion.setQuestionId(id);
             questionService.save(updatedQuestion);
             return ResponseEntity.ok(updatedQuestion);
         } else {
@@ -53,7 +49,6 @@ public class QuestionController {
         }
     }
 
-    // Delete question
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteQuestion(@PathVariable Long id) {
         if (questionService.findById(id) != null) {
@@ -64,9 +59,14 @@ public class QuestionController {
         }
     }
 
+    // @GetMapping("/category/{category}")
+    // public ResponseEntity<List<Question>> getRandomQuestionsByCategory(@PathVariable String category) {
+    //     List<Question> questions = questionService.findRandomQuestionsByCategory(category, 10);
+    //     return ResponseEntity.ok(questions);
     @GetMapping("/category/{category}")
-    public ResponseEntity<List<Question>> getRandomQuestionsByCategory(@PathVariable String category) {
+    public ResponseEntity<List<Question>> getRandomQuestionsByCategory(@PathVariable Category category) {
         List<Question> questions = questionService.findRandomQuestionsByCategory(category, 10);
         return ResponseEntity.ok(questions);
     }
+    // }
 }

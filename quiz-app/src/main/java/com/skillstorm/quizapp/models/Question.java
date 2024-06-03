@@ -9,27 +9,26 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long questionId;
-    private String category;
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
     private String questionText;
     private String option1;
     private String option2;
     private String option3;
     private String correctAnswer;
 
-    @ManyToOne
-    @JoinColumn(name = "quiz_id")
-    private Quiz quiz;
-
     public Question() {}
 
-    public Question(Long questionId, String category, String questionText, String option1, String option2, String option3, String correctAnswer, Quiz quiz) {
+    public Question(Long questionId, Category category, String questionText, String option1, String option2,
+            String option3, String correctAnswer) {
         this.questionId = questionId;
+        this.category = category;
         this.questionText = questionText;
         this.option1 = option1;
         this.option2 = option2;
         this.option3 = option3;
         this.correctAnswer = correctAnswer;
-        this.quiz = quiz;
     }
 
     public Long getQuestionId() {
@@ -38,6 +37,14 @@ public class Question {
 
     public void setQuestionId(Long questionId) {
         this.questionId = questionId;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public String getQuestionText() {
@@ -80,26 +87,11 @@ public class Question {
         this.correctAnswer = correctAnswer;
     }
 
-    public Quiz getQuiz() {
-        return quiz;
-    }
-
-    public void setQuiz(Quiz quiz) {
-        this.quiz = quiz;
-    }
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     @Override
     public String toString() {
-        return "Question [questionId=" + questionId + ", questionText=" + questionText + ", option1=" + option1
-                + ", option2=" + option2 + ", option3=" + option3 + ", correctAnswer=" + correctAnswer + ", quiz="
-                + quiz + "]";
+        return "Question [questionId=" + questionId + ", category=" + category + ", questionText=" + questionText
+                + ", option1=" + option1 + ", option2=" + option2 + ", option3=" + option3 + ", correctAnswer="
+                + correctAnswer + "]";
     }
 
     @Override
@@ -107,12 +99,12 @@ public class Question {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((questionId == null) ? 0 : questionId.hashCode());
+        result = prime * result + ((category == null) ? 0 : category.hashCode());
         result = prime * result + ((questionText == null) ? 0 : questionText.hashCode());
         result = prime * result + ((option1 == null) ? 0 : option1.hashCode());
         result = prime * result + ((option2 == null) ? 0 : option2.hashCode());
         result = prime * result + ((option3 == null) ? 0 : option3.hashCode());
         result = prime * result + ((correctAnswer == null) ? 0 : correctAnswer.hashCode());
-        result = prime * result + ((quiz == null) ? 0 : quiz.hashCode());
         return result;
     }
 
@@ -129,6 +121,11 @@ public class Question {
             if (other.questionId != null)
                 return false;
         } else if (!questionId.equals(other.questionId))
+            return false;
+        if (category == null) {
+            if (other.category != null)
+                return false;
+        } else if (!category.equals(other.category))
             return false;
         if (questionText == null) {
             if (other.questionText != null)
@@ -155,14 +152,8 @@ public class Question {
                 return false;
         } else if (!correctAnswer.equals(other.correctAnswer))
             return false;
-        if (quiz == null) {
-            if (other.quiz != null)
-                return false;
-        } else if (!quiz.equals(other.quiz))
-            return false;
         return true;
     }
-
 
 
     

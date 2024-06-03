@@ -1,0 +1,5 @@
+INSERT INTO category (name, description) VALUES 
+('Java Basics', 'Java Basics covers fundamental concepts of Java programming including syntax, data types, control flow, and object-oriented programming.'),
+('HTML/CSS', 'HTML/CSS includes the foundational knowledge needed to create and style web pages using HTML for structure and CSS for design and layout.'),
+('Angular', 'Angular focuses on the features and functionalities of the Angular framework for building dynamic and modern web applications.'),
+('JavaScript', 'JavaScript encompasses the essentials of JavaScript programming, including variables, functions, events, and DOM manipulation.');

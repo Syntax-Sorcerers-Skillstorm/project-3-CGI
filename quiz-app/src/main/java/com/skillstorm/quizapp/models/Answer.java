@@ -17,22 +17,41 @@ public class Answer {
     @Column(nullable = false)
     private String answer;
 
-    @Column(nullable = false)
-    private Long userId;
-
     public Answer() {}
 
-    public Answer(Long answerId, Question question, String answer, Long userId) {
+    public Answer(Long answerId, Question question, String answer) {
         this.answerId = answerId;
         this.question = question;
         this.answer = answer;
-        this.userId = userId;
+    }
+
+    public Long getAnswerId() {
+        return answerId;
+    }
+
+    public void setAnswerId(Long answerId) {
+        this.answerId = answerId;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 
     @Override
     public String toString() {
-        return "Answer [answerId=" + answerId + ", question=" + question + ", answer=" + answer + ", userId=" + userId
-                + "]";
+        return "Answer [answerId=" + answerId + ", question=" + question + ", answer=" + answer + "]";
     }
 
     @Override
@@ -42,7 +61,6 @@ public class Answer {
         result = prime * result + ((answerId == null) ? 0 : answerId.hashCode());
         result = prime * result + ((question == null) ? 0 : question.hashCode());
         result = prime * result + ((answer == null) ? 0 : answer.hashCode());
-        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
         return result;
     }
 
@@ -70,15 +88,8 @@ public class Answer {
                 return false;
         } else if (!answer.equals(other.answer))
             return false;
-        if (userId == null) {
-            if (other.userId != null)
-                return false;
-        } else if (!userId.equals(other.userId))
-            return false;
         return true;
     }
-
-    
 
     
 }

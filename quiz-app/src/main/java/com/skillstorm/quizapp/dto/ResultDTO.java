@@ -1,36 +1,14 @@
 package com.skillstorm.quizapp.dto;
 
 public class ResultDTO {
+    private int score;
 
-    private Integer score;
- 
-        private Long userId;
-        private Long quizId;
-        private String correctAnswer;
-
-
-    public ResultDTO() {
+    public int getScore() {
+        return score;
     }
 
-    public ResultDTO(Integer score) {
+    public void setScore(int score) {
         this.score = score;
-    }
-    
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public Long getQuizId() {
-        return quizId;
-    }
-
-    public void setQuizId(Long quizId) {
-        this.quizId = quizId;
     }
 
     @Override
@@ -42,7 +20,7 @@ public class ResultDTO {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((score == null) ? 0 : score.hashCode());
+        result = prime * result + score;
         return result;
     }
 
@@ -55,20 +33,9 @@ public class ResultDTO {
         if (getClass() != obj.getClass())
             return false;
         ResultDTO other = (ResultDTO) obj;
-        if (score == null) {
-            if (other.score != null)
-                return false;
-        } else if (!score.equals(other.score))
+        if (score != other.score)
             return false;
         return true;
     }
-
-    public Integer getScore() {
-        return score;
-    }
-
-    public void setScore(Integer score) {
-        this.score = score;
-    }
-
+    
 }
