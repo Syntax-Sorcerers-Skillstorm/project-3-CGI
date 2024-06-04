@@ -1,0 +1,5 @@
+Here are some improvements you might consider based on the code snippet:
+
+QuestionController.all(): Currently, it fetches all questions. You might want to add filtering by quiz category or other criteria.
+AnswerRepository: There's no QuestionRepository included. You might need one to manage questions or include a reference to Question in Answer.
+QuizController.submitQuiz(List<AnswerDTO>): This is a good approach to receive quiz answers from the client. You might want to implement logic to check if the submitted answers belong to a valid quiz and calculate the score based on correct answers.

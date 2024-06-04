@@ -1,5 +1,5 @@
 {
-  "questions": [
+  "question": [
     {
       "category": "HTML/CSS",
       "question": "What does HTML stand for?",
@@ -40,5 +40,6 @@
       "option3": "font-style",
       "correctAnswer": "font-size"
     }
+    
   ]
 }
