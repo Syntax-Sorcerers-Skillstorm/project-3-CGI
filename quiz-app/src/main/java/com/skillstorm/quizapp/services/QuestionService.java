@@ -19,26 +19,30 @@ public class QuestionService {
     public QuestionService(QuestionRepo questionRepo, CategoryRepo categoryRepo) {
         this.questionRepo = questionRepo;
         this.categoryRepo = categoryRepo;
+
     }
 
     public List<QuestionDTO> findAll() {
         return questionRepo.findAll().stream()
-                .map(this::convertToDTO)
+                .map(this::questionToDTO)
                 .collect(Collectors.toList());
     }
 
     public QuestionDTO findById(Long questionId) {
         Optional<Question> question = questionRepo.findById(questionId);
-        return question.map(this::convertToDTO).orElse(null);
+        return question.map(this::questionToDTO).orElse(null);
     }
 
+    // take a list of questions put them in stream, map to dto (using method i
+    // created below), turn them back to a list of dtos
     public List<QuestionDTO> findRandomQuestionsByCategory(Long categoryId) {
         return questionRepo.findRandomQuestionsByCategory(categoryId).stream()
-                .map(this::convertToDTO)
-                .collect(Collectors.toList());
-    }
+                // .map(question -> this.convertToDTO(question))
+                .map(this::questionToDTO)// method ref to this(this service class) questionToDTO method
+                .collect(Collectors.toList()); // collect- terminal operation that converts the stream back into a list.
+    }// streams aren't triggered until terminal op is encountered
 
-    private QuestionDTO convertToDTO(Question question) {
+    QuestionDTO questionToDTO(Question question) {
         QuestionDTO questionDTO = new QuestionDTO();
         questionDTO.setQuestionId(question.getQuestionId());
         questionDTO.setCategoryId(question.getCategoryId().getCategoryId());
@@ -49,8 +53,12 @@ public class QuestionService {
         return questionDTO;
     }
 
-    private Question convertToEntity(QuestionDTO questionDTO) {
+    // returns a Question, takes a QuestionDTO as param.
+    @SuppressWarnings("unused")
+    private Question dtoToEntity(QuestionDTO questionDTO) {
+
         Question question = new Question();
+        // dto fields get copied into new question obj
         question.setQuestionId(questionDTO.getQuestionId());
         question.setQuestionText(questionDTO.getQuestionText());
         question.setOption1(questionDTO.getOption1());

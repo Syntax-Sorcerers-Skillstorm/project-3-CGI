@@ -11,6 +11,7 @@ public interface QuestionRepo extends JpaRepository<Question, Long> {
 
     List<Question> findByCategoryId(Category categoryId);
 
+    //custom query to get questions by category
     @Query(value = "SELECT * FROM question WHERE question.category_id = :category_id ORDER BY RAND()", nativeQuery = true)
     List<Question> findRandomQuestionsByCategory(@Param("category_id") Long categoryId);
 }

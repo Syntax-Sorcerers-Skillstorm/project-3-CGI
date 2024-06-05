@@ -1,7 +1,10 @@
 package com.skillstorm.quizapp.dto;
 
+import java.util.List;
+
 public class ResultDTO {
     private int score;
+    private List<QuestionDTO> missedQuestions;
 
     public ResultDTO() {
     }
@@ -17,10 +20,17 @@ public class ResultDTO {
     public void setScore(int score) {
         this.score = score;
     }
+    public List<QuestionDTO> getMissedQuestions() {
+        return missedQuestions;
+    }
+
+    public void setMissedQuestions(List<QuestionDTO> missedQuestions) {
+        this.missedQuestions = missedQuestions;
+    }
 
     @Override
     public String toString() {
-        return "ResultDTO [score=" + score + "]";
+        return "ResultDTO [score=" + score + ", missedQuestions=" + missedQuestions + "]";
     }
 
     @Override
@@ -28,6 +38,7 @@ public class ResultDTO {
         final int prime = 31;
         int result = 1;
         result = prime * result + score;
+        result = prime * result + ((missedQuestions == null) ? 0 : missedQuestions.hashCode());
         return result;
     }
 
@@ -42,8 +53,16 @@ public class ResultDTO {
         ResultDTO other = (ResultDTO) obj;
         if (score != other.score)
             return false;
+        if (missedQuestions == null) {
+            if (other.missedQuestions != null)
+                return false;
+        } else if (!missedQuestions.equals(other.missedQuestions))
+            return false;
         return true;
     }
+
+
+
 
     
 }

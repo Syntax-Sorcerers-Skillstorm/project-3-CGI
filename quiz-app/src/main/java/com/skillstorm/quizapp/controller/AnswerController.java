@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/answers")
 public class AnswerController {
@@ -17,6 +18,7 @@ public class AnswerController {
         this.answerService = answerService;
     }
 
+    @CrossOrigin
     @PostMapping("/submit")
     public ResponseEntity<ResultDTO> submitQuiz(@RequestBody List<AnswerDTO> answers) {
         ResultDTO result = answerService.gradeQuiz(answers);

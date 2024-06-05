@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import com.skillstorm.quizapp.dto.QuestionDTO;
 import com.skillstorm.quizapp.services.QuestionService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/questions")
 public class QuestionController {
