@@ -34,35 +34,36 @@ Provides data to the frontend through a Spring Boot web API.
 - Spring Data JPA
 - MySQL DB
 ## Project Structure
+
 ```
-└── :file_folder:main
-    └── :file_folder:java
-        └── :file_folder:com
-            └── :file_folder:skillstorm
-                └── :file_folder:quizapp
+└── 📁main
+    └── 📁java
+        └── 📁com
+            └── 📁skillstorm
+                └── 📁quizapp
                     └── QuizAppApplication.java
-                    └── :file_folder:controller
+                    └── 📁controller
                         └── AnswerController.java
                         └── CategoryController.java
                         └── QuestionController.java
-                    └── :file_folder:dto
+                    └── 📁dto
                         └── AnswerDTO.java
                         └── QuestionDTO.java
                         └── QuizDTO.java
                         └── ResultDTO.java
-                    └── :file_folder:models
+                    └── 📁models
                         └── Answer.java
                         └── Category.java
                         └── Question.java
-                    └── :file_folder:repos
+                    └── 📁repos
                         └── AnswerRepository.java
                         └── CategoryRepo.java
                         └── QuestionRepo.java
-                    └── :file_folder:services
+                    └── 📁services
                         └── AnswerService.java
                         └── CategoryService.java
                         └── QuestionService.java
-    └── :file_folder:resources
+    └── 📁resources
         └── application.properties
         └── properties.yaml
 ```
