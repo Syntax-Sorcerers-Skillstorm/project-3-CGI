@@ -2,6 +2,7 @@ package com.skillstorm.quizapp.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,4 +39,12 @@ public class QuestionController {
         List<QuestionDTO> questions = questionService.findRandomQuestionsByCategory(categoryId);
         return ResponseEntity.ok(questions);
     }
+
+
+    @GetMapping("/random")
+    public List<QuestionDTO> getAllRandQuests() {
+        return questionService.findAllRandQuests();
+    }
 }
+
+

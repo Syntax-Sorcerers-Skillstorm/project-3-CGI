@@ -1,6 +1,8 @@
 package com.skillstorm.quizapp.services;
 
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -20,6 +22,12 @@ public class QuestionService {
         this.questionRepo = questionRepo;
         this.categoryRepo = categoryRepo;
 
+    }
+
+    public List<QuestionDTO> findAllRandQuests() {
+        List<QuestionDTO> allQuestions = findAll();
+        Collections.shuffle(allQuestions);
+        return allQuestions; // Return all questions in randomized order
     }
 
     public List<QuestionDTO> findAll() {
@@ -70,4 +78,6 @@ public class QuestionService {
         question.setCategoryId(category);
         return question;
     }
+
+    
 }
