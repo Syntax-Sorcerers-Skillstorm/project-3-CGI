@@ -4,7 +4,7 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 import com.skillstorm.quizapp.services.CategoryService;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/questions")
 public class CategoryController {

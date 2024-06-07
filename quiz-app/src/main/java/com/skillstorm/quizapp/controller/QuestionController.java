@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import com.skillstorm.quizapp.dto.QuestionDTO;
 import com.skillstorm.quizapp.services.QuestionService;
 
+@CrossOrigin
 @RestController
-@RequestMapping("/questions")
+
+@RequestMapping("/questions") // Pulls all questions from the database
 public class QuestionController {
     private final QuestionService questionService;
 
@@ -19,10 +21,10 @@ public class QuestionController {
 
     @GetMapping
     public List<QuestionDTO> all() {
-        return questionService.findAll();
+        return questionService.findAll(); // Method in service class to call all questions
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") // Pulls question by ID
     public ResponseEntity<QuestionDTO> one(@PathVariable Long id) {
         QuestionDTO questionDTO = questionService.findById(id);
         if (questionDTO != null) {
@@ -31,8 +33,8 @@ public class QuestionController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
-
-    @GetMapping("/category/{categoryId}")
+    @CrossOrigin
+    @GetMapping("/category/{categoryId}") // Pulls set of random questions from the same category
     public ResponseEntity<List<QuestionDTO>> getRandomQuestionsByCategory(@PathVariable Long categoryId) {
         List<QuestionDTO> questions = questionService.findRandomQuestionsByCategory(categoryId);
         return ResponseEntity.ok(questions);
